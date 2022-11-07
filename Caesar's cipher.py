@@ -1,10 +1,22 @@
-def is_palindrome(word, word2):
-    p = len(word2)
-    c = -1
-    for i in range(p):
-        if word[::i+1] != word2[::c]:
-            return False
-        c -= 1
-    return True 
+# rotate de letter by a number, spaces makes the program goes crazy
+
+def rotate_word(word, number):
+    nword = []
+    variable = 0
+    word = word.lower()
+    
+    for i in range(len(word)):
         
-print(is_palindrome('pots', 'varv'))
+        if ord(word[i]) + number < 97:
+            variable = 26
+        elif ord(word[i]) + number >= 123:
+            variable = -26
+        else:
+            variable = 0 
+        
+        letra = ord(word[i]) + number + variable
+        nword.append(chr(letra))
+        
+    print(''.join(nword).capitalize())
+
+rotate_word('Jõao', 3)
